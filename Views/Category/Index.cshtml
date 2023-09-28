@@ -1,0 +1,38 @@
+﻿@model List<Category>
+
+@{
+    ViewData["Title"] = "Category Page";
+}
+
+<div class="container">
+
+    <a class="" asp-area="" asp-controller="Category" asp-action="Add">Add</a>
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.CategoryID</th>
+                    <td>@item.CategoryName</td>
+                    <td>@item.Description</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>
