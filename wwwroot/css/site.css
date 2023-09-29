@@ -20,3 +20,28 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position:fixed;
+    background-color: #f8f9fa; /* Background color of the sidebar */
+    padding: 20px;
+    border: 1px solid;
+    border-color: black;
+}
+
+.navbar-nav {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-link {
+    color: #343a40; /* Text color for sidebar links */
+}
+
+.content {
+    flex-grow: 1; /* Allow content to grow to fill available space */
+    padding: 20px;
+}

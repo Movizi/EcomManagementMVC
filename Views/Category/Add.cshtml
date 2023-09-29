@@ -7,25 +7,32 @@
 }
 
 
-<form asp-controller="Category" asp-action="AddCategory" method="post">
+<div class="container">
 
-    <div class="row">
-        <Label class="col-2" asp-for="CategoryName">Category Name</Label>
-        <div class="col-3">
-            <input class="form-control" asp-for="CategoryName" type="text" name="CategoryName" />
-            <span asp-validation-for="CategoryName" class="text-danger"></span>
+    <h1>Create a category</h1>
+
+    <form asp-controller="Category" asp-action="AddCategory" method="post">
+
+        <div class="row">
+            <Label class="col-2" asp-for="CategoryName">Category Name</Label>
+            <div class="col-3">
+                <input class="form-control" asp-for="CategoryName" type="text" name="CategoryName" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+
         </div>
-        
-    </div>
 
-    <div class="row">
-        <Label class="col-2" asp-for="Description">Description</Label>
-        <div class="col-4">
-            <textarea class="form-control" asp-for="Description" name="CategoryName"></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
+        <div class="row">
+            <Label class="col-2" asp-for="Description">Description</Label>
+            <div class="col-4">
+                <textarea class="form-control" asp-for="Description" name="Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
         </div>
-    </div>
-    
-    <button type="submit" class="btn btn-success">Add</button>
 
-</form>
+        <button type="submit" class="btn btn-success">Add</button>
+
+    </form>
+
+</div>
+
