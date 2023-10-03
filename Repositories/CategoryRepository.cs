@@ -51,12 +51,22 @@ namespace EcomManagement.Repositories
 
         public Category GetById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _context.Categories.FirstOrDefault(x => x.CategoryID == id);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public Category Update(Category entity)
         {
-            throw new NotImplementedException();
+            _context.Categories.Update(entity);
+            _context.SaveChanges();
+
+            return entity;
         }
     }
 }

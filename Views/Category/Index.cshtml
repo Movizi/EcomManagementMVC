@@ -26,7 +26,7 @@
                     <th scope="row">@item.CategoryID</th>
                     <td>@item.CategoryName</td>
                     <td>@item.Description</td>
-                    <td>Edit</td>
+                    <td><a class="btn btn-primary" asp-controller="Category" asp-action="Edit" asp-route-id="@item.CategoryID">Edit</a></td>
                     <td>Delete</td>
                 </tr>
             }

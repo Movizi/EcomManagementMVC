@@ -15,6 +15,8 @@ namespace EcomManagement.Controllers
         }
         #endregion
 
+
+        #region Pages
         [HttpGet]
         public IActionResult Index()
         {
@@ -28,12 +30,32 @@ namespace EcomManagement.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Category category = _repo.GetById(id);
+            return View(category);
+        }
+
+        #endregion
+
+        #region CRUD Operations
         [HttpPost]
         public IActionResult AddCategory(Category entity)
         {
-            Category result = _repo.Add(entity);
+            _repo.Add(entity);
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult UpdateCategory(Category entity)
+        {
+            _repo.Update(entity);
+
+            return RedirectToAction("Index");
+        }
+
+        #endregion
     }
 }
