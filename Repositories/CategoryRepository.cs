@@ -11,7 +11,7 @@ namespace EcomManagement.Repositories
         private readonly AppDbContext _context;
         public CategoryRepository(AppDbContext context)
         {
-                _context = context;
+            _context = context;
         }
         #endregion
 
@@ -26,7 +26,7 @@ namespace EcomManagement.Repositories
                 return entity;
 
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return null;
             }
@@ -34,7 +34,18 @@ namespace EcomManagement.Repositories
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var category = _context.Categories.FirstOrDefault(x => x.CategoryID == id);
+                _context.Categories.Remove(category);
+                _context.SaveChanges();
+                
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public List<Category> Get()
@@ -43,7 +54,7 @@ namespace EcomManagement.Repositories
             {
                 return _context.Categories.ToList();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return null;
             }

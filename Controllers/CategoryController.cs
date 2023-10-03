@@ -56,6 +56,12 @@ namespace EcomManagement.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public IActionResult DeleteCategory(int id)
+        {
+            _repo.Delete(id);
+            return RedirectToAction("Index");
+        }
         #endregion
     }
 }
