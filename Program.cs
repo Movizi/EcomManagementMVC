@@ -1,5 +1,6 @@
 using EcomManagement.Contracts;
 using EcomManagement.Data;
+using EcomManagement.Migrations;
 using EcomManagement.Models.Categories;
 using EcomManagement.Repositories;
 using Microsoft.AspNetCore.Identity;

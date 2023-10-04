@@ -1,11 +1,19 @@
-html {
-    font-size: 14px;
-}
+:root {
+    /* Colors /*/
+  --background-color: white;
+  --border-color: #e3e3e3;
+  --main: #4e61ff;
+  --purple: #9069ff;
+  --blue: #69b7ff;
+  --green: #6cd67e;
+  --black: #434343;
+  --orange: #ffb169;
+  --white: #ffffff;
+  --pink: #ff69b1;
+  --red: #ff696c;
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
+  /*/ Fonts */
+    --inter: "Inter", sans-serif;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -16,10 +24,10 @@ html {
     position: relative;
     min-height: 100%;
 }
-
+/*
 body {
-    margin-bottom: 60px;
-}
+    font-family: var(--inter);
+}*/
 
 /* Sidebar Styles */
 /*.sidebar {
@@ -34,28 +42,34 @@ body {
 
 .sidebar {
     height: 100%;
-    width: 160px;
-    position: fixed;
-    z-index: 1;
+    width: 12em;
+    /*position: fixed;*/
     top: 0;
     left: 0;
-    background-color: white;
-    overflow-x: hidden;
-    padding-top: 20px;
+    background-color: var(--background-color);
+    padding: 20px;
+    border-right: 2px solid;
+    border-color: black;
 }
 
 .sidebar a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
+    font-size: 20x;
+    color: white;
     display: block;
 }
 
 .main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
+    font-size: 20px; /* Increased text to enable scrolling */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /*padding: 0px 10px;*/
+}
+
+.main-table{
+    width: 100%;
 }
 
 .navbar-nav {
@@ -67,7 +81,21 @@ body {
     color: #343a40; /* Text color for sidebar links */
 }
 
+.nav-item{
+    margin: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
 .content {
-    flex-grow: 1; /* Allow content to grow to fill available space */
-    padding: 20px;
+    padding: 25px;
+    margin: 20px;
+}
+
+table{
+    margin-top: 25px;
+}
+
+a{
+    text-decoration:none;
 }
