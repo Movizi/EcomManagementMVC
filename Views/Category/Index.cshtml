@@ -4,12 +4,17 @@
     ViewData["Title"] = "Category Page";
 }
 
+
+
+
+
 <div class="content">
 
     <h1>Categories</h1>
 
-
-    <a class="btn btn-lg btn-success" asp-area="" asp-controller="Category" asp-action="Add"><i class="bi bi-plus-square"></i></a>
+    @{
+        Html.RenderPartial("_AddCategoryModal", new Category());
+    }
 
     <div class="table-responsive">
 
@@ -32,9 +37,13 @@
                         <td>@item.CategoryName</td>
                         <td>@item.Description</td>
                         <td>
-                            <a class="btn btn-lg btn-primary" asp-controller="Category" asp-action="Edit" asp-route-id="@item.CategoryID">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
+                            @*<a class="btn btn-lg btn-primary" asp-controller="Category" asp-action="Edit" asp-route-id="@item.CategoryID">
+                        <i class="bi bi-pencil-square"></i>
+                        </a>*@
+                            @{
+                                Html.RenderPartial("_EditCategoryModal", item);
+                            }
+
                         </td>
                         <td>
                             <form method="post" asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@item.CategoryID">

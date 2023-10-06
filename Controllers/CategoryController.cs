@@ -24,19 +24,6 @@ namespace EcomManagement.Controllers
             return View(result);
         }
 
-        [HttpGet]
-        public IActionResult Add()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            Category category = _repo.GetById(id);
-            return View(category);
-        }
-
         #endregion
 
         #region CRUD Operations
