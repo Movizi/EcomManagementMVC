@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     @*<link rel="stylesheet" href="~/EcomManagement.styles.css" asp-append-version="true" />*@
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="~/css/Designs/buttonDesigs.css"/>
+    <link rel="stylesheet" href="~/css/Designs/buttonDesigs.css" />
 
 </head>
 
@@ -20,10 +20,13 @@
         <main class="main" style="height: 100vh">
 
             <nav class="sidebar">
+                <img src="~/Images/Chopper.jpg" alt="chopper" style="width: 70%" />
+
                 <!-- Sidebar content -->
-                        <a class="navButton" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        <a class="navButton" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        <a class="navButton" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
+                <a class="navButton" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="navButton" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                <a class="navButton" asp-area="" asp-controller="Category" asp-action="Index">Categories</a>
+                <a class="navButton" asp-area="" asp-controller="Supplier" asp-action="Index">Suppliers</a>
             </nav>
 
             <div class="container">

@@ -1,15 +1,14 @@
-﻿@model List<Category>
+﻿@model List<Supplier>
 
 @{
-    ViewData["Title"] = "Category Page";
+    ViewData["Title"] = "Supplier Page";
 }
 
 <div class="content">
 
-    <h1>Categories</h1>
+    <h1>Suppliers</h1>
 
-
-    <a class="btn btn-lg btn-success" asp-area="" asp-controller="Category" asp-action="Add"><i class="bi bi-plus-square"></i></a>
+    <a class="btn btn-lg btn-success" asp-area="" asp-controller="Supplier" asp-action="Add"><i class="bi bi-plus-square"></i></a>
 
     <div class="table-responsive">
 
@@ -19,6 +18,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -28,16 +28,17 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <th scope="row">@item.CategoryID</th>
-                        <td>@item.CategoryName</td>
+                        <th scope="row">@item.SupplierID</th>
+                        <td>@item.SupplierName</td>
                         <td>@item.Description</td>
+                        <td><img src="@item.Image"/></td>
                         <td>
-                            <a class="btn btn-lg btn-primary" asp-controller="Category" asp-action="Edit" asp-route-id="@item.CategoryID">
+                            <a class="btn btn-lg btn-primary" asp-controller="Supplier" asp-action="Edit" asp-route-id="@item.SupplierID">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
                         </td>
                         <td>
-                            <form method="post" asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@item.CategoryID">
+                            <form method="post" asp-controller="Supplier" asp-action="DeleteSupplier" asp-route-id="@item.SupplierID">
                                 <button type="submit" class="btn btn-lg btn-danger" onclick="return confirm('Are you sure you want to delete this item?')"><i class="bi bi-trash"></i></button>
                             </form>
                         </td>

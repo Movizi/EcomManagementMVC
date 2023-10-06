@@ -52,6 +52,10 @@ body {
     border-color: black;
 }
 
+.sidebar img{
+    margin-left: 10px;
+}
+
 .sidebar a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
