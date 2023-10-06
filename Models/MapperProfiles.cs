@@ -12,7 +12,8 @@ namespace EcomManagement.Models
             CreateMap<CategoryDto, Category>().ReverseMap();
 
             // Suppliers Map
-            CreateMap<SupplierDto, Supplier>().ReverseMap();
+            CreateMap<SupplierDto, Supplier>().ReverseMap().ForMember(dest => dest.Image, opt => opt.Ignore()); 
+          
 
         }
     }

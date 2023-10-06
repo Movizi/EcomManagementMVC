@@ -6,41 +6,49 @@
 @{
 }
 
-
 <div class="container">
 
-    <h1>Create a Supplier</h1>
+    <h1 style="text-align:center; margin-top:50px;">Create a Supplier</h1>
 
-    <form asp-controller="Supplier" asp-action="AddSupplier" enctype="multipart/form-data" method="post">
+    <div class="center">
 
-        <div class="row m-3">
-            <Label class="col-2" asp-for="SupplierName">Name</Label>
-            <div class="col-3">
-                <input class="form-control" asp-for="SupplierName" type="text" name="SupplierName" />
-                <span asp-validation-for="SupplierName" class="text-danger"></span>
-            </div>
+        <div class="card">
 
+            <form asp-controller="Supplier" asp-action="AddSupplier" enctype="multipart/form-data" method="post">
+
+                <div class="row m-3">
+                    <Label class="col-2" asp-for="SupplierName">Name</Label>
+                    <div class="col-3">
+                        <input class="form-control" asp-for="SupplierName" type="text" name="SupplierName" />
+                        <span asp-validation-for="SupplierName" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="row m-3">
+                    <Label class="col-2" asp-for="Description">Description</Label>
+                    <div class="col-4">
+                        <textarea class="form-control" asp-for="Description" name="Description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row m-3">
+                    <label for="formFile" class="col-2" asp-for="Image">Upload Image</label>
+                    <div class="col-6">
+                        <input asp-for="Image" class=" form-control" type="file" id="formFile">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <button type="submit" class="btn btn-success">Add</button>
+                </div>
+                
+            </form>
         </div>
 
-        <div class="row m-3">
-            <Label class="col-2" asp-for="Description">Description</Label>
-            <div class="col-4">
-                <textarea class="form-control" asp-for="Description" name="Description"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="row m-3">
-            <label for="formFile" class="col-2" asp-for="Image">Upload Image</label>
-            <div class="col-6">
-                <input asp-for="Image" class=" form-control" type="file" id="formFile">
-            </div>
-            
-        </div>
-
-        <button type="submit" class="btn btn-success">Add</button>
-
-    </form>
-
+    </div>
 </div>
+
 

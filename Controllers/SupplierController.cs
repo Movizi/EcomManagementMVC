@@ -41,7 +41,10 @@ namespace EcomManagement.Controllers
         public IActionResult Edit(int id)
         {
             Supplier supplier = _repo.GetById(id);
-            return View(supplier);
+
+            SupplierDto result = _mapper.Map<SupplierDto>(supplier);
+
+            return View(result);
         }
         #endregion
 
