@@ -1,11 +1,11 @@
 ﻿@model Category
 
-<button type="button" class="btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#editCategoryModal">
+<button type="button" class="btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#editCategoryModal-@Model.CategoryID">
     <i class="bi bi-pencil-square"></i>
 </button>
 
 <!-- Modal -->
-<div class="modal modal-lg fade" id="editCategoryModal" tabindex="-1" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+<div class="modal modal-lg fade" id="editCategoryModal-@Model.CategoryID" tabindex="-1" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 

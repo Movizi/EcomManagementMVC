@@ -84,9 +84,36 @@ namespace EcomManagement.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateSupplier(Supplier entity)
+        public IActionResult UpdateSupplier(SupplierDto entity)
         {
-            _repo.Update(entity);
+            string serverFolder = string.Empty;
+            string imageUrl = string.Empty;
+
+            if (entity.Image != null)
+            {
+                string folder = "Images/Supplier/"; // Use forward slashes for paths
+                string uniqueFileName = entity.Image.FileName;
+
+                string filePath = Path.Combine(_webHostEnvironment.WebRootPath, folder, uniqueFileName);
+
+                using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                {
+                    entity.Image.CopyTo(stream);
+                }
+
+                // Now, store the URL ("/Images/Supplier/uniqueFileName") in your database.
+                imageUrl = $"/{folder}{uniqueFileName}";
+            }
+
+            var request = new Supplier
+            {
+                SupplierID = entity.SupplierID,
+                SupplierName = entity.SupplierName,
+                Description = entity.Description,
+                Image = imageUrl
+            };
+
+            _repo.Update(request);
 
             return RedirectToAction("Index");
         }
