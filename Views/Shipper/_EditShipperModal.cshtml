@@ -19,6 +19,8 @@
 
                 <div class="modal-body">
 
+                    <input class="form-control" hidden asp-for="ShipperID" type="text" name="ShipperID" />
+
                     <div class="row">
                         <Label class="col-2" asp-for="ShipperName">Shipper Name</Label>
                         <div class="col">
@@ -55,15 +57,15 @@
                     <div class="row">
                         <Label class="col-2" asp-for="Email">Email</Label>
                         <div class="col">
-                            <input class="form-control" asp-for="Email" type="text" name="ShipperEmailName" />
+                            <input class="form-control" asp-for="Email" type="text" name="Email" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
 
                     <div class="row">
-                        <Label class="col-2" asp-for="Email">IsActive</Label>
+                        <Label class="col-2" asp-for="IsActive">IsActive</Label>
                         <div class="col">
-                            <input class="form-control" asp-for="IsActive" type="checkbox" name="IsActive" />
+                            <input class="form-check-input" asp-for="IsActive" type="checkbox" name="IsActive" />
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                     </div>

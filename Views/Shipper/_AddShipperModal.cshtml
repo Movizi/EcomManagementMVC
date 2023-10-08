@@ -15,7 +15,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form asp-controller="Shipper" asp-action="AddShipper" method="post">
+            <form asp-controller="Shipper" asp-action="AddShipper" enctype="multipart/form-data" method="post">
 
                 <div class="modal-body">
 
@@ -55,7 +55,7 @@
                     <div class="row">
                         <Label class="col-2" asp-for="Email">Email</Label>
                         <div class="col">
-                            <input class="form-control" asp-for="Email" type="text" name="ShipperEmailName" />
+                            <input class="form-control" asp-for="Email" type="text" name="Email" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                     <div class="row">
                         <Label class="col-2" asp-for="Email">IsActive</Label>
                         <div class="col">
-                            <input class="form-control" asp-for="IsActive" type="checkbox" name="IsActive" />
+                            <input class="form-check-input" asp-for="IsActive" type="checkbox" name="IsActive" />
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                     </div>

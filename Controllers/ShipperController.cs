@@ -1,5 +1,4 @@
-﻿using AspNetCore;
-using AutoMapper;
+﻿using AutoMapper;
 using EcomManagement.Contracts;
 using EcomManagement.HelperMethods;
 using EcomManagement.Models.Categories;
@@ -32,7 +31,8 @@ namespace EcomManagement.Controllers
         #region Pages
         public IActionResult Index()
         {
-            return View();
+            var result = _repo.Get();
+            return View(result);
         }
 
         #endregion
