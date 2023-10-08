@@ -1,0 +1,101 @@
+﻿@model Shipper
+
+<button type="button" class="btn btn-lg btn-success" data-bs-toggle="modal" data-bs-target="#addShipperModal">
+    New <i class="bi bi-plus-square"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal modal-lg fade" id="addShipperModal" tabindex="-1" aria-labelledby="addShipperModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addShipperModalLabel">Create Shipper</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form asp-controller="Shipper" asp-action="AddShipper" method="post">
+
+                <div class="modal-body">
+
+                    <div class="row">
+                        <Label class="col-2" asp-for="ShipperName">Shipper Name</Label>
+                        <div class="col">
+                            <input class="form-control" asp-for="ShipperName" type="text" name="ShipperName" />
+                            <span asp-validation-for="ShipperName" class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <Label class="col-2" asp-for="Description">Description</Label>
+                        <div class="col">
+                            <textarea class="form-control" asp-for="Description" name="Description"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="formFile" class="col-3" asp-for="Image">Upload Image</label>
+                        <div class="col">
+                            <input asp-for="Image" class=" form-control" type="file" id="formFile">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <Label class="col-2" asp-for="Phone">Phone</Label>
+                        <div class="col">
+                            <input class="form-control" asp-for="Phone" type="text" name="Phone" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <Label class="col-2" asp-for="Email">Email</Label>
+                        <div class="col">
+                            <input class="form-control" asp-for="Email" type="text" name="ShipperEmailName" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <Label class="col-2" asp-for="Email">IsActive</Label>
+                        <div class="col">
+                            <input class="form-control" asp-for="IsActive" type="checkbox" name="IsActive" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <Label class="col-2" asp-for="ShippingPrice">ShippingPrice</Label>
+                        <div class="col">
+                            <input class="form-control" asp-for="ShippingPrice" type="number" name="ShippingPrice" />
+                            <span asp-validation-for="ShippingPrice" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-2" asp-for="Currency">Currency</label>
+                        <div class="col">
+                            <select asp-for="Currency" class="form-control" asp-items="Html.GetEnumSelectList<Currencies>()">
+                                <option value="">Select a Currency</option>
+                            </select>
+                            <span asp-validation-for="Currency" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

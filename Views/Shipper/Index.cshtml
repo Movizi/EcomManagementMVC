@@ -1,0 +1,74 @@
+﻿@model List<Shipper>
+
+@{
+    ViewData["Title"] = "Shipper Page";
+}
+
+<div class="content">
+
+    <h1>Shipper</h1>
+
+    @{
+        Html.RenderPartial("_AddShipperModal", new Category());
+    }
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">IsActive</th>
+                    <th scope="col">ShippingPrice</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.ShipperID</th>
+                        <td>@item.ShipperName</td>
+                        <td><img src="@item.Image" style="width:50px;" /></td>
+                        <td>@item.Phone</td>
+                        <td>
+                            @if (item.IsActive)
+                            {
+                                <span>YES</span>
+                            }
+                            else
+                            {
+                                <span>NO</span>
+                            }
+                        </td>
+
+                        <td>@item.ShippingPrice @item.Currency</td>
+
+                        <td>
+                            @*<a class="btn btn-lg btn-primary" asp-controller="Category" asp-action="Edit" asp-route-id="@item.CategoryID">
+                        <i class="bi bi-pencil-square"></i>
+                        </a>*@
+                            @{
+                                Html.RenderPartial("_EditShipperModal", item);
+                            }
+
+                        </td>
+                        <td>
+                            <form method="post" asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@item.ShipperID">
+                                <button type="submit" class="btn btn-lg btn-danger" onclick="return confirm('Are you sure you want to delete this item?')"><i class="bi bi-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

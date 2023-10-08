@@ -1,4 +1,5 @@
 ﻿using EcomManagement.Models.Categories;
+using EcomManagement.Models.Shippers;
 using EcomManagement.Models.Suppliers;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,7 @@ namespace EcomManagement.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Shipper> Shippers { get; set; }
 
     }
 }

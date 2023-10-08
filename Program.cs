@@ -2,6 +2,7 @@ using EcomManagement.Contracts;
 using EcomManagement.Data;
 using EcomManagement.Migrations;
 using EcomManagement.Models.Categories;
+using EcomManagement.Models.Shippers;
 using EcomManagement.Models.Suppliers;
 using EcomManagement.Repositories;
 using Microsoft.AspNetCore.Identity;
@@ -28,6 +29,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Scopes
 builder.Services.AddScoped<ICrudRepository<Category>, CategoryRepository>();
 builder.Services.AddScoped<ICrudRepository<Supplier>, SupplierRepository>();
+builder.Services.AddScoped<ICrudRepository<Shipper>, ShipperRepository>();
 
 var app = builder.Build();
 
