@@ -10,18 +10,17 @@
         <div class="modal-content">
 
 
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="addCategoryModalLabel">Create Category</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-dark">
+                <h1 class="modal-title fs-5 text-light" id="addCategoryModalLabel">Create Category</h1>
+                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <form asp-controller="Category" asp-action="AddCategory" method="post">
 
                 <div class="modal-body">
 
-
-                    <div class="row">
-                        <Label class="col-2" asp-for="CategoryName">Category Name</Label>
+                    <div class="row m-3">
+                        <Label class="col-3" asp-for="CategoryName">Category Name</Label>
                         <div class="col">
                             <input class="form-control" asp-for="CategoryName" type="text" name="CategoryName" />
                             <span asp-validation-for="CategoryName" class="text-danger"></span>
@@ -29,8 +28,8 @@
 
                     </div>
 
-                    <div class="row">
-                        <Label class="col-2" asp-for="Description">Description</Label>
+                    <div class="row m-3">
+                        <Label class="col-3" asp-for="Description">Description</Label>
                         <div class="col">
                             <textarea class="form-control" asp-for="Description" name="Description"></textarea>
                             <span asp-validation-for="Description" class="text-danger"></span>
@@ -40,7 +39,7 @@
                 </div>
 
 
-                <div class="modal-footer">
+                <div class="modal-footer bg-dark">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-success">Save</button>
                 </div>

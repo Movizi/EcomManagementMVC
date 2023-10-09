@@ -10,9 +10,9 @@
         <div class="modal-content">
 
 
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="editSupplierModalLabel">Update Supplier</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-dark">
+                <h1 class="modal-title fs-5 text-light" id="editSupplierModalLabel">Edit Supplier</h1>
+                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <form asp-controller="Supplier" asp-action="UpdateSupplier" enctype="multipart/form-data" method="post">
@@ -21,7 +21,7 @@
 
                     <input class="form-control" hidden asp-for="SupplierID" type="text" name="SupplierID" />
 
-                    <div class="row">
+                    <div class="row m-3">
                         <Label class="col-3" asp-for="SupplierName">Supplier Name</Label>
                         <div class="col">
                             <input class="form-control" asp-for="SupplierName" type="text" name="SupplierName" />
@@ -30,7 +30,7 @@
 
                     </div>
 
-                    <div class="row">
+                    <div class="row m-3">
                         <Label class="col-3" asp-for="Description">Description</Label>
                         <div class="col">
                             <textarea class="form-control" asp-for="Description" name="Description"></textarea>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row m-3">
                         <label for="formFile" class="col-3" asp-for="Image">Upload Image</label>
                         <div class="col">
                             <input asp-for="Image" class=" form-control" type="file" id="formFile">
@@ -48,7 +48,7 @@
 
                 </div>
 
-                <div class="modal-footer">
+                <div class="modal-footer bg-dark">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
