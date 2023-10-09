@@ -47,12 +47,10 @@
                             }
                         </td>
 
-                        <td>@item.ShippingPrice @item.Currency</td>
+                        <td>@decimal.Truncate(item.ShippingPrice) @CurrencyHelper.GetCurrencySymbol(item.Currency) </td>
 
                         <td>
-                            @*<a class="btn btn-lg btn-primary" asp-controller="Category" asp-action="Edit" asp-route-id="@item.CategoryID">
-                        <i class="bi bi-pencil-square"></i>
-                        </a>*@
+
                             @{
                                 Html.RenderPartial("_EditShipperModal", item);
                             }

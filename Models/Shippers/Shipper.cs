@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EcomManagement.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace EcomManagement.Models.Shippers
 {
@@ -27,6 +28,6 @@ namespace EcomManagement.Models.Shippers
         public decimal ShippingPrice { get; set; }
 
         [Required]
-        public string Currency { get; set; }
+        public Currencies Currency { get; set; }
     }
 }
