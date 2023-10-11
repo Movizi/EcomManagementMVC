@@ -4,10 +4,6 @@
     ViewData["Title"] = "Category Page";
 }
 
-
-
-
-
 <div class="content">
 
     <h1>Categories</h1>
@@ -18,8 +14,8 @@
 
     <div class="table-responsive">
 
-        <table class="table table-bordered">
-            <thead class="table-dark">
+        <table id="categoryDatatable" class="">
+            <thead class="">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
@@ -33,7 +29,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <th scope="row">@item.CategoryID</th>
+                        <th>@item.CategoryID</th>
                         <td>@item.CategoryName</td>
                         <td>@item.Description</td>
                         <td>
@@ -59,3 +55,11 @@
     </div>
 
 </div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#categoryDatatable').dataTable({});
+    });
+
+</script>
