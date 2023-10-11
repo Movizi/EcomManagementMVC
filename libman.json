@@ -18,5 +18,5 @@
       "library": "bootstrap@5.3.2",
       "destination": "wwwroot/lib/bootstrap/"
     }
-  ]
+]
 }

@@ -65,7 +65,7 @@ body {
 }
 
 .main {
-    font-size: 20px; /* Increased text to enable scrolling */
+    font-size: 18px; /* Increased text to enable scrolling */
     display: flex;
     flex-direction: row;
     width: 100%;
