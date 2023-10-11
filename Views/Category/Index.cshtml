@@ -4,10 +4,6 @@
     ViewData["Title"] = "Category Page";
 }
 
-
-
-
-
 <div class="content">
 
     <h1>Categories</h1>
@@ -16,46 +12,49 @@
         Html.RenderPartial("_AddCategoryModal", new Category());
     }
 
-    <div class="table-responsive">
+    @*table table-striped dt-responsive nowrap text-center*@
 
-        <table class="table table-bordered">
-            <thead class="table-dark">
+    <table id="categoryDatatable" class="table table-striped text-center">
+        <thead class="">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <th scope="row">@item.CategoryID</th>
-                        <td>@item.CategoryName</td>
-                        <td>@item.Description</td>
-                        <td>
-                            @*<a class="btn btn-lg btn-primary" asp-controller="Category" asp-action="Edit" asp-route-id="@item.CategoryID">
-                        <i class="bi bi-pencil-square"></i>
-                        </a>*@
+                    <th>@item.CategoryID</th>
+                    <td>@item.CategoryName</td>
+                    <td>@item.Description</td>
+                    <td class="row d-flex justify-content-center">
+                        <div class="col-2">
                             @{
                                 Html.RenderPartial("_EditCategoryModal", item);
                             }
-
-                        </td>
-                        <td>
+                        </div>
+                        <div class="col-2">
                             <form method="post" asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@item.CategoryID">
-                                <button type="submit" class="btn btn-lg btn-danger" onclick="return confirm('Are you sure you want to delete this item?')"><i class="bi bi-trash"></i></button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')"><i class="bi bi-trash"></i></button>
                             </form>
-                        </td>
-                    </tr>
-                }
+                        </div>
+                    </td>
+                </tr>
+            }
 
-            </tbody>
-        </table>
-
-    </div>
+        </tbody>
+    </table>
 
 </div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#categoryDatatable').DataTable({});
+    });
+
+</script>
