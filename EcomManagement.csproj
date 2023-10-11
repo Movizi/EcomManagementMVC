@@ -21,6 +21,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\Images\Shipper\" />
     <Folder Include="wwwroot\Images\Supplier\" />
+    <Folder Include="wwwroot\Icons\" />
   </ItemGroup>
 
 </Project>

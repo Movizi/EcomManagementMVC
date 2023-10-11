@@ -1,22 +1,54 @@
+/* Base Styles */
 :root {
-    /* Colors /*/
-  --background-color: white;
-  --border-color: #e3e3e3;
-  --main: #4e61ff;
-  --purple: #9069ff;
-  --blue: #69b7ff;
-  --green: #6cd67e;
-  --black: #434343;
-  --orange: #ffb169;
-  --white: #ffffff;
-  --pink: #ff69b1;
-  --red: #ff696c;
-
-  /*/ Fonts */
-    --inter: "Inter", sans-serif;
+	/* Colors /*/
+	--background-color: #f6f6f6;
+	--border-color: #e3e3e3;
+	--main: #4e61ff;
+	--purple: #9069ff;
+	--blue: #69b7ff;
+	--green: #6cd67e;
+	--black: #434343;
+	--orange: #ffb169;
+	--white: #ffffff;
+	--pink: #ff69b1;
+	--red: #ff696c;
+	/*/ Fonts */
+	--inter: "Inter", sans-serif;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+html, body, .main-container {
+	height: 100%;
+}
+
+body {
+	font-family: var(--inter);
+	color: var(--black);
+}
+
+.main {
+	width: 100%;
+	background-color: var(--background-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
@@ -24,53 +56,14 @@ html {
     position: relative;
     min-height: 100%;
 }
-/*
-body {
-    font-family: var(--inter);
-}*/
-
-/* Sidebar Styles */
-/*.sidebar {
-    width: 250px;
-    height: 100vh;
-    position:fixed;
-    background-color: #f8f9fa;*/ /* Background color of the sidebar */
-/*padding: 20px;
-    border: 1px solid;
-    border-color: black;
-}*/
-
-.sidebar {
-    height: 100%;
-    width: 12em;
-    /*position: fixed;*/
-    top: 0;
-    left: 0;
-    background-color: var(--background-color);
-    padding: 20px;
-    border-right: 2px solid;
-    border-color: black;
-}
-
-.sidebar img{
-    margin-left: 10px;
-}
-
-.sidebar a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20x;
-    color: white;
-    display: block;
-}
 
 .main {
-    font-size: 20px; /* Increased text to enable scrolling */
-    display: flex;
+    font-size: 20px;*/ /* Increased text to enable scrolling */
+/*display: flex;
     flex-direction: row;
-    width: 100%;
-    /*padding: 0px 10px;*/
-}
+    width: 100%;*/
+/*padding: 0px 10px;*/
+/*}
 
 .main-table{
     width: 100%;
@@ -82,8 +75,8 @@ body {
 }
 
 .nav-link {
-    color: #343a40; /* Text color for sidebar links */
-}
+    color: #343a40;*/ /* Text color for sidebar links */
+/*}
 
 .nav-item{
     margin: 5px;
@@ -116,4 +109,4 @@ a{
     display: flex;
     justify-content: center;
     margin-top: 50px;
-}
+}*/
