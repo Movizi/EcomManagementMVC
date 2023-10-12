@@ -33,22 +33,23 @@
 	border-radius: 0.5em;
 }
 
-	.sidebar-navlink:last-of-type {
-		margin-bottom: 0;
-	}
-
 .sidebar-navlink,
 .link-icon > svg path {
 	transition: 0.3s ease;
 }
 
-	.sidebar-navlink:hover {
-		background-color: var(--main);
-		color: var(--white);
+	.sidebar-navlink:last-of-type {
+		margin-bottom: 0;
 	}
 
-		.sidebar-navlink:hover .link-icon > svg path {
-			fill: var(--white);
+
+	.sidebar-navlink:hover, .active-navlink {
+		background-color: var(--main) !important;
+		color: var(--white) !important;
+	}
+
+		.sidebar-navlink:hover .link-icon > svg path, .active-navlink .link-icon > svg path {
+			fill: var(--white) !important;
 		}
 
 .link-icon > svg path {
@@ -89,6 +90,12 @@
 	}
 
 	.link-icon {
+		width: 1.5em;
+		height: 1.5em;
 		margin-right: 1em;
+	}
+
+	.link-name {
+		font-size: 1em;
 	}
 }
