@@ -37,10 +37,10 @@
 		margin-bottom: 0;
 	}
 
-	.sidebar-navlink
-	.link-icon > svg path {
-		transition: 0.3s ease;
-	}
+.sidebar-navlink,
+.link-icon > svg path {
+	transition: 0.3s ease;
+}
 
 	.sidebar-navlink:hover {
 		background-color: var(--main);
@@ -50,9 +50,6 @@
 		.sidebar-navlink:hover .link-icon > svg path {
 			fill: var(--white);
 		}
-
-.link {
-}
 
 .link-icon > svg path {
 	fill: var(--black);
