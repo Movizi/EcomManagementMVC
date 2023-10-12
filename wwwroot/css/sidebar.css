@@ -27,38 +27,31 @@
 	justify-content: start;
 	width: 16.5em;
 	height: 3.625em;
+	color: var(--black);
+	font-weight: 600 !important;
+	text-decoration: none !important;
 	border-radius: 0.5em;
 }
-
 
 	.sidebar-navlink:last-of-type {
 		margin-bottom: 0;
 	}
 
 	.sidebar-navlink
-	.link,
 	.link-icon > svg path {
 		transition: 0.3s ease;
 	}
 
 	.sidebar-navlink:hover {
 		background-color: var(--main);
+		color: var(--white);
 	}
-
-		.sidebar-navlink:hover .link {
-			color: var(--white);
-		}
 
 		.sidebar-navlink:hover .link-icon > svg path {
 			fill: var(--white);
 		}
 
 .link {
-	display: flex;
-	align-items: center;
-	color: var(--black);
-	text-decoration: none;
-	font-weight: 600;
 }
 
 .link-icon > svg path {
