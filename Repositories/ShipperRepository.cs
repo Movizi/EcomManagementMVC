@@ -29,7 +29,7 @@ namespace EcomManagement.Repositories
             }
         }
 
-        public bool Delete(int id)
+        public Shipper Delete(int id)
         {
             try
             {
@@ -38,11 +38,11 @@ namespace EcomManagement.Repositories
                 _context.Shippers.Remove(entity);
                 _context.SaveChanges();
 
-                return true;
+                return entity;
             }
             catch (Exception)
-            {
-                return false;
+            {   
+                return null;
             }
         }
 

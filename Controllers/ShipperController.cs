@@ -71,7 +71,12 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult DeleteShipper(int id)
         {
-            _repo.Delete(id);
+            var entity = _repo.Delete(id);
+
+            var imageName = Path.GetFileName(entity.Image);
+
+            SavingImageHelper.DeleteImage<Shipper>(imageName, _webHostEnvironment);
+
             return RedirectToAction("Index");
         }
         #endregion

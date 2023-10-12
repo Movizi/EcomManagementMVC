@@ -32,7 +32,7 @@ namespace EcomManagement.Repositories
             }
         }
 
-        public bool Delete(int id)
+        public Category Delete(int id)
         {
             try
             {
@@ -40,11 +40,11 @@ namespace EcomManagement.Repositories
                 _context.Categories.Remove(category);
                 _context.SaveChanges();
                 
-                return true;
+                return category;
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
         }
 

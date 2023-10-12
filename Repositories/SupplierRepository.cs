@@ -28,7 +28,7 @@ namespace EcomManagement.Repositories
             }
         }
 
-        public bool Delete(int id)
+        public Supplier Delete(int id)
         {
             try
             {
@@ -36,11 +36,12 @@ namespace EcomManagement.Repositories
 
                 _context.Suppliers.Remove(entity);
                 _context.SaveChanges();
-                return true;
+
+                return entity;
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
         }
 
