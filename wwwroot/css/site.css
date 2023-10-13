@@ -1,6 +1,6 @@
 /* Base Styles */
 :root {
-	/* Colors /*/
+	/* Colors */
 	--background-color: #f6f6f6;
 	--border-color: #e3e3e3;
 	--main: #4e61ff;
@@ -12,7 +12,7 @@
 	--white: #ffffff;
 	--pink: #ff69b1;
 	--red: #ff696c;
-	/*/ Fonts */
+	/* Fonts */
 	--inter: "Inter", sans-serif;
 }
 
