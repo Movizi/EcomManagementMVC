@@ -21,5 +21,29 @@ namespace EcomManagement.HelperMethods
 
             return $"/{folder}{fileName}";
         }
+
+        public static bool DeleteImage<T>(string imageName, IWebHostEnvironment webHost)
+        {
+            string getFolderName = typeof(T).Name;
+            string webRootPath = webHost.WebRootPath;
+            string imagePath = Path.Combine(webRootPath, "Images", getFolderName, imageName);
+
+            try
+            {
+                if (File.Exists(imagePath))
+                {
+                    File.Delete(imagePath);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

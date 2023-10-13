@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using EcomManagement.Contracts;
+using EcomManagement.HelperMethods;
 using EcomManagement.Models.Categories;
+using EcomManagement.Models.Shippers;
 using EcomManagement.Models.Suppliers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -121,7 +123,12 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult DeleteSupplier(int id)
         {
-            _repo.Delete(id);
+            var entity = _repo.Delete(id);
+
+            var imageName = Path.GetFileName(entity.Image);
+
+            SavingImageHelper.DeleteImage<Supplier>(imageName, _webHostEnvironment);
+
             return RedirectToAction("Index");
         }
         #endregion
