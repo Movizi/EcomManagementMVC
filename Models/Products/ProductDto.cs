@@ -1,12 +1,11 @@
 ﻿using EcomManagement.Models.Categories;
-using EcomManagement.Models.Enums;
 using EcomManagement.Models.Suppliers;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace EcomManagement.Models.Products
 {
-    public class Product
+    public class ProductDto
     {
         [Key]
         public int ProductID { get; set; }
@@ -27,8 +26,7 @@ namespace EcomManagement.Models.Products
         [Required]
         public int UnitsInStock { get; set; }
 
-        [Required]
-        public Currencies Currency { get; set; }
+        public List<ProductImageDto> Images { get; set; }
 
         [ForeignKey("SupplierID")]
         public Supplier Supplier { get; set; }

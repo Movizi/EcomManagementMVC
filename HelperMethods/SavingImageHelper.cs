@@ -45,5 +45,19 @@ namespace EcomManagement.HelperMethods
                 return false;
             }
         }
+
+        public static IFormFile GetFormFileFromPath(string filePath)
+        {
+            // Read the file content into a byte array
+            byte[] fileBytes = File.ReadAllBytes(filePath);
+
+            // Create a stream from the byte array
+            Stream stream = new MemoryStream(fileBytes);
+
+            // Create an IFormFile using the stream
+            IFormFile formFile = new FormFile(stream, 0, fileBytes.Length, "name", Path.GetFileName(filePath));
+
+            return formFile;
+        }
     }
 }
