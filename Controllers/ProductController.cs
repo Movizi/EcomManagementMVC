@@ -1,32 +1,42 @@
 ﻿using AutoMapper;
 using EcomManagement.Contracts;
 using EcomManagement.HelperMethods;
+using EcomManagement.Models.Categories;
 using EcomManagement.Models.Products;
+using EcomManagement.Models.Suppliers;
 using EcomManagement.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Abstractions;
 using System.Security.Cryptography.Xml;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EcomManagement.Controllers
 {
-    public class ProductContoller : Controller
+    public class ProductController : Controller
     {
         #region Injection
 
         private readonly ICrudRepository<Product> _productRepository;
         private readonly IProductImageRepository _imageRepository;
+        private readonly ICrudRepository<Category> _categoryRepository;
+        private readonly ICrudRepository<Supplier> _supplierRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IMapper _mapper;
-        public ProductContoller(
+        public ProductController(
             ICrudRepository<Product> productRepository,
             IProductImageRepository imageRepository,
+            ICrudRepository<Category> categoryRepository,
+            ICrudRepository<Supplier> supplierRepository,
             IWebHostEnvironment webHostEnvironment,
             IMapper mapper
             )
         {
             _productRepository = productRepository;
             _imageRepository = imageRepository;
+            _categoryRepository = categoryRepository;
+            _supplierRepository = supplierRepository;
             _webHostEnvironment = webHostEnvironment;
             _mapper = mapper;
         }
@@ -34,12 +44,24 @@ namespace EcomManagement.Controllers
         #endregion
 
         #region Pages
+
         [HttpGet]
         public IActionResult Index()
         {
             var products = _productRepository.Get();
 
             var result = _mapper.Map<List<ProductViewModel>>(products);
+
+            ViewBag.Categories = _categoryRepository.Get().Select(category => new SelectListItem
+            {
+                Text = category.CategoryName,
+                Value = category.CategoryID.ToString()
+            });
+            ViewBag.Suppliers = _supplierRepository.Get().Select(supplier => new SelectListItem
+            {
+                Text = supplier.SupplierName,
+                Value = supplier.SupplierID.ToString()
+            });
 
             return View(result);
         }
@@ -48,11 +70,10 @@ namespace EcomManagement.Controllers
         public IActionResult Edit(int id)
         {
             var product = _productRepository.GetById(id);
-
             var result = _mapper.Map<ProductDto>(product);
 
             var images = _imageRepository.GetImagesByProductId(id);
-
+            
             foreach (var image in images)
             {
                 var tempImage = new ProductImageDto
@@ -60,8 +81,19 @@ namespace EcomManagement.Controllers
                     Image = SavingImageHelper.GetFormFileFromPath(image.Image)
                 };
                     
-                result.Images.Add(tempImage);
+                //result.Images.Add(tempImage);
             }
+
+            ViewBag.Categories = _categoryRepository.Get().Select(category => new SelectListItem
+            {
+                Text = category.CategoryName,
+                Value = category.CategoryID.ToString()
+            });
+            ViewBag.Suppliers = _supplierRepository.Get().Select(supplier => new SelectListItem
+            {
+                Text = supplier.SupplierName,
+                Value = supplier.SupplierID.ToString()
+            });
 
             return View(result);
         }
@@ -84,7 +116,7 @@ namespace EcomManagement.Controllers
                     var tempImage = new ProductImage
                     {
                         ProductId = addProduct.ProductID,
-                        Image = SavingImageHelper.SaveImageAndGetString<Product>(image.Image, _webHostEnvironment)
+                        Image = SavingImageHelper.SaveImageAndGetString<Product>(image, _webHostEnvironment)
                     };
 
                     _imageRepository.Add(tempImage);
@@ -112,7 +144,7 @@ namespace EcomManagement.Controllers
                         var tempImage = new ProductImage
                         {
                             ProductId = editProduct.ProductID,
-                            Image = SavingImageHelper.SaveImageAndGetString<Product>(image.Image, _webHostEnvironment)
+                            Image = SavingImageHelper.SaveImageAndGetString<Product>(image, _webHostEnvironment)
                         };
 
                         _imageRepository.Add(tempImage);

@@ -1,5 +1,101 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ProductDto
+
 @{
+    var categories = ViewBag.Categories;
+    var suppliers = ViewBag.Suppliers;
 }
+
+<button type="button" class="btn btn-lg btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">
+    New <i class="bi bi-plus-square"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal modal-lg fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+
+            <div class="modal-header bg-dark">
+                <h1 class="modal-title fs-5 text-light" id="addProductModalLabel">Add Product</h1>
+                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form asp-controller="Product" asp-action="AddProduct" enctype="multipart/form-data" method="post">
+
+                <div class="modal-body">
+
+                        <input class="form-control" hidden asp-for="ProductID" type="number" name="ProductID" />
+
+                        <div class="row m-3">
+                            <Label class="col-3" asp-for="ProductName">Product Name</Label>
+                            <div class="col">
+                                <input class="form-control" asp-for="ProductName" type="text" name="ProductName" />
+                                <span asp-validation-for="ProductName" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="row m-3">
+                            <Label class="col-3" asp-for="Description">Description</Label>
+                            <div class="col">
+                                <textarea class="form-control" asp-for="Description" name="Description"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <label class="col-3" asp-for="CategoryID">Categories</label>
+                            <div class="col">
+                            <select asp-for="CategoryID" class="form-control" asp-items="categories">
+                                    <option value="CategoryId">Select a Category</option>
+                                </select>
+                                <span asp-validation-for="CategoryID" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <label class="col-3" asp-for="SupplierID">suppliers</label>
+                            <div class="col">
+                            <select asp-for="SupplierID" class="form-control" asp-items="suppliers">
+                                    <option value="SupplierID">Select a Supplier</option>
+                                </select>
+                                <span asp-validation-for="SupplierID" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <label for="formFile" class="col-3" asp-for="Images">Upload Image</label>
+                            <div class="col">
+                                <input asp-for="Images" class=" form-control" type="file" multiple id="formFile">
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <Label class="col-3" asp-for="Price">Price</Label>
+                            <div class="col">
+                                <input type="number" class="form-control" asp-for="Price" name="Price" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row m-3">
+                            <Label class="col-3" asp-for="UnitsInStock">Units In Stock</Label>
+                            <div class="col">
+                                <input type="number" class="form-control" asp-for="UnitsInStock" name="UnitsInStock" />
+                                <span asp-validation-for="UnitsInStock" class="text-danger"></span>
+                            </div>
+                        </div>                    
+
+                </div>
+
+
+                <div class="modal-footer bg-dark">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -2,11 +2,11 @@
 
 <div class="container">
 
-    <form asp-controller="Supplier" asp-action="UpdateSupplier" enctype="multipart/form-data" method="post">
+    <form asp-controller="Product" asp-action="UpdateProduct" enctype="multipart/form-data" method="post">
 
         <div class="">
 
-            <input class="form-control" hidden asp-for="SupplierID" type="text" name="SupplierID" />
+            <input class="form-control" hidden asp-for="ProductID" type="number" name="ProductID" />
 
             <div class="row m-3">
                 <Label class="col-3" asp-for="ProductName">Product Name</Label>
@@ -26,11 +26,46 @@
             </div>
 
             <div class="row m-3">
+                <label class="col-3" asp-for="CategoryID">Categories</label>
+                <div class="col">
+                    <select asp-for="CategoryID" class="form-control" asp-items="ViewBag.Categories">
+                        <option value="CategoryId">Select a Category</option>
+                    </select>
+                    <span asp-validation-for="CategoryID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row m-3">
+                <label class="col-3" asp-for="SupplierID">Suppliers</label>
+                <div class="col">
+                    <select asp-for="SupplierID" class="form-control" asp-items="ViewBag.Suppliers">
+                        <option value="SupplierID">Select a Supplier</option>
+                    </select>
+                    <span asp-validation-for="SupplierID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row m-3">
                 <label for="formFile" class="col-3" asp-for="Images">Upload Image</label>
                 <div class="col">
                     <input asp-for="Images" class=" form-control" type="file" multiple id="formFile">
                 </div>
+            </div>
 
+            <div class="row m-3">
+                <Label class="col-3" asp-for="Price">Price</Label>
+                <div class="col">
+                    <input type="number" class="form-control" asp-for="Price" name="Price"/>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row m-3">
+                <Label class="col-3" asp-for="UnitsInStock">Units In Stock</Label>
+                <div class="col">
+                    <input type="number" class="form-control" asp-for="UnitsInStock" name="UnitsInStock" />
+                    <span asp-validation-for="UnitsInStock" class="text-danger"></span>
+                </div>
             </div>
 
         </div>

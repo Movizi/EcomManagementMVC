@@ -29,7 +29,7 @@ namespace EcomManagement.Models.Products
         [Required]
         public int UnitsInStock { get; set; }
 
-        public List<ProductImageDto> Images { get; set; }
+        public IFormFileCollection Images { get; set; }
 
         [ForeignKey("SupplierID")]
         public Supplier Supplier { get; set; }
