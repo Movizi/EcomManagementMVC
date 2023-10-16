@@ -53,6 +53,28 @@ namespace EcomManagement.Repositories
             }
         }
 
+        public bool DeleteImagesByProductID(int productId)
+        {
+            try
+            {
+                var images = _context.ProductImages.Where(x => x.ProductId == productId).ToList();
+                
+                if (images != null)
+                {
+                    _context.ProductImages.RemoveRange(images);
+                    _context.SaveChanges();
+
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public List<ProductImage> Get()
         {
             try

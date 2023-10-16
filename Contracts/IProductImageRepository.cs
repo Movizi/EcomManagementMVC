@@ -5,5 +5,6 @@ namespace EcomManagement.Contracts
     public interface IProductImageRepository : ICrudRepository<ProductImage>
     {
         public List<ProductImage> GetImagesByProductId(int productId);
+        public bool DeleteImagesByProductID(int productId);
     }
 }

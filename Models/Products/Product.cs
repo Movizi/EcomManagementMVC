@@ -16,6 +16,9 @@ namespace EcomManagement.Models.Products
         public string ProductName { get; set; }
 
         [Required]
+        public string Description { get; set; }
+
+        [Required]
         public int SupplierID { get; set; }
 
         [Required]

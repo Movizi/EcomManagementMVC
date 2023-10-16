@@ -4,6 +4,8 @@ using EcomManagement.HelperMethods;
 using EcomManagement.Models.Products;
 using EcomManagement.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Abstractions;
 using System.Security.Cryptography.Xml;
 
 namespace EcomManagement.Controllers
@@ -92,6 +94,47 @@ namespace EcomManagement.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public IActionResult UpdateProduct(ProductDto entity)
+        {
+            var product = _mapper.Map<Product>(entity);
+
+            var editProduct = _productRepository.Update(product);
+
+            if(editProduct != null && entity.Images != null)
+            {
+                var deleteImages = _imageRepository.DeleteImagesByProductID(editProduct.ProductID);
+
+                if (deleteImages)
+                {
+                    foreach (var image in entity.Images)
+                    {
+                        var tempImage = new ProductImage
+                        {
+                            ProductId = editProduct.ProductID,
+                            Image = SavingImageHelper.SaveImageAndGetString<Product>(image.Image, _webHostEnvironment)
+                        };
+
+                        _imageRepository.Add(tempImage);
+                    }
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult DeleteProduct(int productId)
+        {
+            var deleteProduct = _productRepository.Delete(productId);
+            
+            if (deleteProduct != null)
+            {
+                _imageRepository.DeleteImagesByProductID(productId);
+            }
+
+            return RedirectToAction("Index");
+        }
         #endregion
     }
 }
