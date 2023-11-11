@@ -98,6 +98,18 @@ namespace EcomManagement.Controllers
             return View(result);
         }
 
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var product = _productRepository.GetById(id);
+            var result = _mapper.Map<ProductDto>(product);
+
+            var images = _imageRepository.GetImagesByProductId(id);
+
+            ViewBag.Images = images;
+
+            return View(result);
+        }
         #endregion
 
         #region CRUD Operations

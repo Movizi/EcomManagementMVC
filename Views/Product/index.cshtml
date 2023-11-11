@@ -37,7 +37,11 @@
                     <td>@item.UnitsInStock</td>
                     <td class="row d-flex justify-content-center">
                         <div class="col-2">
-                            <a class="btn btn-Primary" asp-controller="Product" asp-action="Edit" asp-route-id="@item.ProductID"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-success" asp-controller="Product" asp-action="Details" asp-route-id="@item.ProductID"><i class="bi bi-info-square"></i></a>
+                        </div>
+                        
+                        <div class="col-2">
+                            <a class="btn btn-primary" asp-controller="Product" asp-action="Edit" asp-route-id="@item.ProductID"><i class="bi bi-pencil-square"></i></a>
                         </div>
                         <div class="col-2">
                             <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@item.ProductID">

@@ -76,7 +76,10 @@ namespace EcomManagement.Repositories
         {
             try
             {
-                return _context.Products.FirstOrDefault(x => x.ProductID == id);
+                return _context.Products
+                    .Include(x => x.Category)
+                    .Include(x => x.Supplier)
+                    .FirstOrDefault(x => x.ProductID == id);
             }
             catch (Exception)
             {

@@ -1,0 +1,52 @@
+﻿@model ProductDto
+
+@{
+    var images = ViewBag.Images;
+}
+
+<div>
+
+    <div class="row m-3">
+        <Label class="col-3" asp-for="ProductName">Product Name:</Label>
+        <p>@Model.ProductName</p>
+    </div>
+
+    <div class="row m-3">
+        <Label class="col-3" asp-for="Description">Description:</Label>
+        <p>@Model.Description</p>
+    </div>
+
+    <div class="row m-3">
+        <Label class="col-3" asp-for="Supplier.SupplierName">Supplier:</Label>
+        <p>@Model.Supplier.SupplierName</p>
+    </div>
+
+    <div class="row m-3">
+        <Label class="col-3" asp-for="ProductName">Product Name:</Label>
+        <p>@Model.ProductName</p>
+    </div>
+
+    <div class="row m-3">
+        <Label class="col-3" asp-for="Category.CategoryName">Category:</Label>
+        <p>@Model.Category.CategoryName</p>
+    </div>
+
+    <div class="row m-3">
+        <Label class="col-3" asp-for="Price">Price:</Label>
+        <p>@Model.Price</p>
+    </div>
+
+    <div class="row m-3">
+        <Label class="col-3" asp-for="UnitsInStock">UnitsInStock:</Label>
+        <p>@Model.UnitsInStock</p>
+    </div>
+
+    <div class="row m-3">
+        <Label class="col-3" asp-for="ProductName">Images:</Label>
+        @foreach (var image in images)
+        {
+            <img class="col-2" src="@image.Image" alt="image"/> 
+        }
+    </div>
+
+</div>
