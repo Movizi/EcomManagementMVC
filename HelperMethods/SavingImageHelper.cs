@@ -48,8 +48,13 @@ namespace EcomManagement.HelperMethods
 
         public static IFormFile GetFormFileFromPath(string filePath)
         {
+
+            string wwwRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+            string physicalPath = Path.Combine(wwwRootPath, filePath.TrimStart('~', '/'));
+
+
             // Read the file content into a byte array
-            byte[] fileBytes = File.ReadAllBytes(filePath);
+            byte[] fileBytes = File.ReadAllBytes(physicalPath);
 
             // Create a stream from the byte array
             Stream stream = new MemoryStream(fileBytes);

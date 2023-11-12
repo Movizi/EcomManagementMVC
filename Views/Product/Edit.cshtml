@@ -1,5 +1,10 @@
 ﻿@model ProductDto
 
+
+@{
+    var images = ViewBag.Images;
+}
+
 <div class="container">
 
     <form asp-controller="Product" asp-action="UpdateProduct" enctype="multipart/form-data" method="post">
@@ -46,10 +51,18 @@
             </div>
 
             <div class="row m-3">
-                <label for="formFile" class="col-3" asp-for="Images">Upload Image</label>
+                <label for="formFile" class="col-3" asp-for="Images">Upload New Images</label>
                 <div class="col">
                     <input asp-for="Images" class=" form-control" type="file" multiple id="formFile">
                 </div>
+            </div>
+
+            <div class="row m-3">
+                <Label class="col-3" asp-for="ProductName">Existing Images:</Label>
+                @foreach (var image in images)
+                {
+                    <img class="col-2" src="@image.Image" alt="image" />
+                }
             </div>
 
             <div class="row m-3">

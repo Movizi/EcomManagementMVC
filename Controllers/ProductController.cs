@@ -73,16 +73,8 @@ namespace EcomManagement.Controllers
             var result = _mapper.Map<ProductDto>(product);
 
             var images = _imageRepository.GetImagesByProductId(id);
-            
-            foreach (var image in images)
-            {
-                var tempImage = new ProductImageDto
-                {
-                    Image = SavingImageHelper.GetFormFileFromPath(image.Image)
-                };
-                    
-                //result.Images.Add(tempImage);
-            }
+
+            ViewBag.Images = images;
 
             ViewBag.Categories = _categoryRepository.Get().Select(category => new SelectListItem
             {
@@ -168,13 +160,13 @@ namespace EcomManagement.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteProduct(int productId)
+        public IActionResult DeleteProduct(int id)
         {
-            var deleteProduct = _productRepository.Delete(productId);
+            var deleteProduct = _productRepository.Delete(id);
             
             if (deleteProduct != null)
             {
-                _imageRepository.DeleteImagesByProductID(productId);
+                _imageRepository.DeleteImagesByProductID(id);
             }
 
             return RedirectToAction("Index");
