@@ -3,11 +3,13 @@ using EcomManagement.Contracts;
 using EcomManagement.HelperMethods;
 using EcomManagement.Models.Categories;
 using EcomManagement.Models.Shippers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EcomManagement.Controllers
 {
+    [Authorize]
     public class ShipperController : Controller
     {
         #region Injection

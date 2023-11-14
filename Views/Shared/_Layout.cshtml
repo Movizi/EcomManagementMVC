@@ -22,10 +22,21 @@
 
 </head>
 <body>
+	
+	@if (!User.Identity.IsAuthenticated)
+	{
+		<style>
+				.blurred-element {
+					filter: blur(10px);
+				}
+
+		</style>
+	}
+
 	@* Main Container *@
 	<div class="main-container d-flex">
 		@* Sidebar *@
-		<nav class="sidebar long-sidebar d-flex flex-column">
+		<nav class="sidebar blurred-element long-sidebar d-flex flex-column">
 			<div class="sidebar-brand d-flex">
 				<img class="brand-logo" src="~/logo.svg" alt="brand-logo" />
 				<h1 class="brand-name d-flex justify-content-center align-items-center">LOOPIN</h1>
@@ -100,8 +111,7 @@
 					</div>
 					<div class="user-details d-flex align-items-center">
 						<div class="d-flex flex-column justify-content-center align-items-end">
-							<h2 class="user-name">Nika Gogelia</h2>
-							<p class="user-status">Admin</p>
+							<partial name="_LoginPartial" />
 						</div>
 						<img class="user-image" src="~/Images/Rectangle.png" alt="User Image" />
 					</div>

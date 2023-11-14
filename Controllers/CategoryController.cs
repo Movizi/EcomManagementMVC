@@ -1,9 +1,11 @@
 ﻿using EcomManagement.Contracts;
 using EcomManagement.Models.Categories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EcomManagement.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         #region Injection

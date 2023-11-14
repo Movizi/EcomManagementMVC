@@ -5,6 +5,7 @@ using EcomManagement.Models.Categories;
 using EcomManagement.Models.Products;
 using EcomManagement.Models.Suppliers;
 using EcomManagement.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
@@ -14,6 +15,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace EcomManagement.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         #region Injection

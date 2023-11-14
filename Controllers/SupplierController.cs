@@ -4,10 +4,12 @@ using EcomManagement.HelperMethods;
 using EcomManagement.Models.Categories;
 using EcomManagement.Models.Shippers;
 using EcomManagement.Models.Suppliers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EcomManagement.Controllers
 {
+    [Authorize]
     public class SupplierController : Controller
     {
         #region Injection
