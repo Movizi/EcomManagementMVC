@@ -1,0 +1,128 @@
+﻿.managebar {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    transition: 0.4s ease;
+}
+
+.managebar-brand {
+    border-bottom: 1px solid var(--border-color);
+    justify-content: start;
+}
+
+.brand-name {
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.managebar-links-container {
+    height: 100%;
+}
+
+.managebar-navlink {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: var(--black);
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    border-radius: 0.5em;
+}
+
+.managebar-navlink,
+.link-icon > svg path {
+    transition: 0.3s ease;
+}
+
+.managebar-navlink:last-of-type {
+    margin-bottom: 0;
+}
+
+.link-icon > svg path {
+    fill: var(--black);
+}
+
+.link-name, .brand-name {
+    opacity: 1;
+    transition: opacity 0.4s ease, font-size 0.3s ease;
+}
+
+.short-managebar .managebar-brand {
+    justify-content: center;
+}
+
+.short-managebar .brand-name {
+    margin-left: 0;
+}
+
+.short-managebar .link-name, .short-managebar .brand-name {
+    opacity: 0;
+    font-size: 0;
+}
+
+.short-managebar .managebar-navlink {
+    justify-content: center !important;
+}
+
+    .short-managebar .managebar-navlink .link-icon {
+        margin-right: 0;
+    }
+
+/* Desktop */
+@media only screen and (width >= 1024px) {
+    .managebar {
+        padding: 0 1.5em 1.5em 1.5em;
+    }
+
+    .long-managebar {
+        width: 19.5em !important;
+    }
+
+    .short-managebar {
+        width: 8.25em !important;
+    }
+
+    .managebar-brand {
+        padding: 2em 0 2.5em 1.5em;
+    }
+
+    .short-managebar .managebar-brand {
+        padding: 2em 0 2.5em 0;
+    }
+
+    .brand-name {
+        font-size: 1.5em;
+        margin-left: 1rem;
+    }
+
+    .brand-logo {
+        width: 2.875em;
+        height: 2.875em;
+    }
+
+    .managebar-navlinks {
+        margin-top: 2em;
+    }
+
+    .managebar-navlink {
+        width: 16.5em;
+        height: 3.625em;
+        padding: 1.5em;
+        margin-bottom: 1em;
+    }
+
+    .short-managebar .managebar-navlink {
+        width: 3.625em;
+        height: 3.625em;
+    }
+
+    .link-icon {
+        width: 1.5em;
+        height: 1.5em;
+        margin-right: 1em;
+    }
+
+    .link-name {
+        font-size: 1em;
+    }
+}

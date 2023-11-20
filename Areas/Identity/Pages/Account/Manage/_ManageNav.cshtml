@@ -2,14 +2,76 @@
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
-<ul class="nav nav-pills flex-column">
-    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>
-    @if (hasExternalLogins)
-    {
-        <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>
-    }
-    <li class="nav-item"><a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">Two-factor authentication</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Personal data</a></li>
-</ul>
+
+<link rel="stylesheet" href="~/css/ManageNav.css"/>
+
+<div class="">
+
+    <nav class="managebar blurred-element long-managebar d-flex flex-column">
+
+        <div class="sidebar-brand d-flex">
+            <h4 class="brand-name d-flex justify-content-center align-items-center">Account Settings</h4>
+        </div>
+        <div class="managebar-navlinks d-flex flex-column align-items-center">
+            
+            <ul class="nav nav-pills flex-column">
+
+                <li class="nav-item">
+                <a class="managebar-navlink nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">
+                    <span class="link-name">Profile</span>
+                </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="managebar-navlink nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">
+                    <span class="link-name">Email</span>
+                </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="managebar-navlink nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">
+                    <span class="link-name">Password</span>
+                </a>
+                </li>
+
+                @if (hasExternalLogins)
+                {
+                    <li class="nav-item">
+                        <a id="external-login" class="managebar-navlink nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">
+                        <span class="link-name">External logins</span>
+                    </a>
+                    </li>
+                }
+
+                <li class="nav-item">
+                    <a class="managebar-navlink nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">
+                    <span class="link-name">Two-factor authentication</span>
+                </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="managebar-navlink nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">
+                    <span class="link-name">Personal data</span>
+                </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    @*<ul class="nav nav-pills flex-column">
+        <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
+        <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
+        <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>
+        @if (hasExternalLogins)
+        {
+            <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>
+        }
+        <li class="nav-item"><a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">Two-factor authentication</a></li>
+        <li class="nav-item"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Personal data</a></li>
+    </ul>*@
+
+</div>
+
+
