@@ -4,50 +4,47 @@
     ViewData["Title"] = "Two-factor authentication";
 }
 
-<link rel="stylesheet" href="~/css/login2fa.css" />
+<link rel="stylesheet" href="~/css/login.css" />
 
-<h1>@ViewData["Title"]</h1>
+<div class="container mt-5" id="container">
 
+    <div class="form-container sign-in-container">
 
-<div class="card">
-    <div class="card-image">
-    </div>
-    <p class="card-title">
-        Two-factor authentication
+        <form id="account" method="post" asp-route-returnUrl="@Model.ReturnUrl">
 
-    </p>
-    <p class="card-body">
-    <p class="pcolor">Check your authenticator app</p>
-    <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
-        <input asp-for="RememberMe" type="hidden" />
-        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-        <div class="form-floating mb-3">
-            <input asp-for="Input.TwoFactorCode" class="form-control" autocomplete="off" />
-            <label asp-for="Input.TwoFactorCode" class="form-label"></label>
+            <h1>Sign in</h1>
+            <h4>With Two-Factor Code</h4>
+
+            <br/>
+
+            <input asp-for="Input.TwoFactorCode" autocomplete="off" placeholder="TwoFactorCode" aria-required="true" />
             <span asp-validation-for="Input.TwoFactorCode" class="text-danger"></span>
-        </div>
-        <div class="checkbox mb-3">
-            <label asp-for="Input.RememberMachine" class="form-label">
-                <input asp-for="Input.RememberMachine" />
-                    @Html.DisplayNameFor(m => m.Input.RememberMachine)
-            </label>
-        </div>
-        <div>
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
-        </div>
-    </form>
 
-    </p>
-    <p class="footer">Written by <span class="by-name">John Doe</span> on <span class="date">25/05/23</span></p>
+            <button id="login-submit" type="submit">Sign In</button>
+
+            <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">log in with a recovery code</a>.
+
+
+        </form>
+
+    </div>
+
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <div class="d-flex">
+                    <img class="brand-logo" src="~/logo.svg" alt="brand-logo" />
+                    <h1 class="d-flex justify-content-center align-items-center">LOOPIN</h1>
+                </div>
+                <br />
+
+                <h5>@ViewData["Title"]</h5>
+
+            </div>
+        </div>
+    </div>
+
 </div>
-
-
-<hr />
-
-<p>
-    Don't have access to your authenticator device? You can
-    <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">log in with a recovery code</a>.
-</p>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
