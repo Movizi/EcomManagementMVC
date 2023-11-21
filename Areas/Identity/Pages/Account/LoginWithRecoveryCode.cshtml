@@ -4,24 +4,46 @@
     ViewData["Title"] = "Recovery code verification";
 }
 
-<h1>@ViewData["Title"]</h1>
-<hr />
-<p>
-    You have requested to log in with a recovery code. This login will not be remembered until you provide
-    an authenticator app code at log in or disable 2FA and log in again.
-</p>
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.RecoveryCode" class="form-control" autocomplete="off" placeholder="RecoveryCode" />
-                <label asp-for="Input.RecoveryCode" class="form-label"></label>
-                <span asp-validation-for="Input.RecoveryCode" class="text-danger"></span>
-            </div>
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+
+<link rel="stylesheet" href="~/css/login.css" />
+
+<div class="container mt-5" id="container">
+
+    <div class="form-container sign-in-container">
+
+        <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+
+            <h1>Sign in</h1>
+            <h4>With Recovery Code</h4>
+
+            <br />
+
+            <input asp-for="Input.RecoveryCode" autocomplete="off" placeholder="RecoveryCode" aria-required="true" />
+            <span asp-validation-for="Input.RecoveryCode" class="text-danger"></span>
+
+            <button id="login-submit" type="submit">Sign In</button>
+
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="./LoginWith2fa">Sign in with authenticator app</a>
+
         </form>
+
     </div>
+
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <div class="d-flex">
+                    <img class="brand-logo" src="~/logo.svg" alt="brand-logo" />
+                    <h1 class="d-flex justify-content-center align-items-center">LOOPIN</h1>
+                </div>
+                <br />
+
+                <h5>@ViewData["Title"]</h5>
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 @section Scripts {

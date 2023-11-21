@@ -20,7 +20,11 @@
             </div>
             <span>or use your account</span>
             <input asp-for="Input.Email" type="email" placeholder="Email" autocomplete="username" aria-required="true" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+
             <input asp-for="Input.Password" type="password" placeholder="Password" autocomplete="current-password" aria-required="true" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+
             <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
             <button id="login-submit" type="submit">Sign In</button>
         </form>
