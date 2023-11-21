@@ -35,27 +35,17 @@ namespace EcomManagement.Controllers
             return View(result);
         }
 
-        [HttpGet]
-        public IActionResult Add()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            Supplier supplier = _repo.GetById(id);
-
-            SupplierDto result = _mapper.Map<SupplierDto>(supplier);
-
-            return View(result);
-        }
         #endregion
 
         #region CRUD Operations
         [HttpPost]
         public IActionResult AddSupplier(SupplierDto entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             string serverFolder = string.Empty;
             string imageUrl = string.Empty;
 
@@ -90,6 +80,11 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult UpdateSupplier(SupplierDto entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             string serverFolder = string.Empty;
             string imageUrl = string.Empty;
 
@@ -125,6 +120,11 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult DeleteSupplier(int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             var entity = _repo.Delete(id);
 
             var imageName = Path.GetFileName(entity.Image);
@@ -133,6 +133,7 @@ namespace EcomManagement.Controllers
 
             return RedirectToAction("Index");
         }
+
         #endregion
 
     }

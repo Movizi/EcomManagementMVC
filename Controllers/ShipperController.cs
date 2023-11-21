@@ -43,6 +43,11 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult AddShipper(ShipperDto entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             var request = _mapper.Map<Shipper>(entity);
 
             if (entity.Image != null)
@@ -58,6 +63,11 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult UpdateShipper(ShipperDto entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             var request = _mapper.Map<Shipper>(entity);
 
             if (entity.Image != null)
@@ -73,6 +83,11 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult DeleteShipper(int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             var entity = _repo.Delete(id);
 
             var imageName = Path.GetFileName(entity.Image);

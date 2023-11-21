@@ -32,6 +32,11 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult AddCategory(Category entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             _repo.Add(entity);
 
             return RedirectToAction("Index");
@@ -40,6 +45,11 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult UpdateCategory(Category entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             _repo.Update(entity);
 
             return RedirectToAction("Index");
@@ -48,7 +58,13 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult DeleteCategory(int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             _repo.Delete(id);
+
             return RedirectToAction("Index");
         }
         #endregion

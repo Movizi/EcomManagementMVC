@@ -111,6 +111,11 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult AddProduct(ProductDto entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             var product = _mapper.Map<Product>(entity);
 
             var addProduct = _productRepository.Add(product);
@@ -135,6 +140,11 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult UpdateProduct(ProductDto entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Edit");
+            }
+
             var product = _mapper.Map<Product>(entity);
 
             var editProduct = _productRepository.Update(product);
@@ -164,6 +174,11 @@ namespace EcomManagement.Controllers
         [HttpPost]
         public IActionResult DeleteProduct(int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             var deleteProduct = _productRepository.Delete(id);
             
             if (deleteProduct != null)

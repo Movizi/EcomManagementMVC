@@ -1,5 +1,7 @@
 using EcomManagement.Contracts;
 using EcomManagement.Data;
+using EcomManagement.Extensions;
+using EcomManagement.LoggerService;
 using EcomManagement.Migrations;
 using EcomManagement.Models.Categories;
 using EcomManagement.Models.Products;
@@ -8,8 +10,13 @@ using EcomManagement.Models.Suppliers;
 using EcomManagement.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Logger (NLOG)
+LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+builder.Services.AddSingleton<ILoggerManager, LoggerManager>();
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -36,6 +43,8 @@ builder.Services.AddScoped<IProductImageRepository, ProductImageRepository>();
 
 var app = builder.Build();
 
+var logger = app.Services.GetService<ILoggerManager>();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -47,6 +56,8 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.ConfigureExceptionHandler(logger);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
