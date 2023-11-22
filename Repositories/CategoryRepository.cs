@@ -1,7 +1,6 @@
 ﻿using EcomManagement.Contracts;
 using EcomManagement.Data;
 using EcomManagement.Models.Categories;
-using System.Collections.ObjectModel;
 
 namespace EcomManagement.Repositories
 {
@@ -15,69 +14,61 @@ namespace EcomManagement.Repositories
         }
         #endregion
 
-        public Category Add(Category entity)
-        {
-            try
-            {
-                _context.Categories.Add(entity);
-
-                _context.SaveChanges();
-
-                return entity;
-
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        public Category Delete(int id)
-        {
-            try
-            {
-                var category = _context.Categories.FirstOrDefault(x => x.CategoryID == id);
-                _context.Categories.Remove(category);
-                _context.SaveChanges();
-                
-                return category;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
+        #region Main Operations
 
         public List<Category> Get()
         {
-            try
-            {
-                return _context.Categories.ToList();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return _context.Categories.ToList();
         }
 
         public Category GetById(int id)
         {
-            try
-            {
-                return _context.Categories.FirstOrDefault(x => x.CategoryID == id);
-            }
-            catch (Exception)
-            {
+            if (id == 0)
                 return null;
-            }
+
+            return _context.Categories.FirstOrDefault(x => x.CategoryID == id);
+        }
+
+        public Category Add(Category entity)
+        {
+
+            if (entity == null)
+                return null;
+
+            _context.Categories.Add(entity);
+
+            _context.SaveChanges();
+
+            return entity;
         }
 
         public Category Update(Category entity)
         {
+            if (entity == null)
+                return null;
+
             _context.Categories.Update(entity);
             _context.SaveChanges();
 
             return entity;
         }
+
+        public Category Delete(int id)
+        {
+            if (id == 0)
+                return null;
+
+            var category = _context.Categories.FirstOrDefault(x => x.CategoryID == id);
+
+            if (category == null)
+                return null;
+
+            _context.Categories.Remove(category);
+            _context.SaveChanges();
+
+            return category;
+        }
+
+        #endregion
     }
 }

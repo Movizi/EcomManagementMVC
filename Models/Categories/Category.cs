@@ -6,6 +6,7 @@ namespace EcomManagement.Models.Categories
     {
         [Key]
         public int CategoryID { get; set; }
+        [Required]
         public string CategoryName { get; set; }
         public string Description { get; set; }
     }

@@ -1,6 +1,7 @@
 ﻿using EcomManagement.Contracts;
 using EcomManagement.Data;
 using EcomManagement.Models.Suppliers;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace EcomManagement.Repositories
 {
@@ -14,73 +15,56 @@ namespace EcomManagement.Repositories
         }
         #endregion
 
-        public Supplier Add(Supplier entity)
-        {
-            try
-            {
-                _context.Suppliers.Add(entity);
-                _context.SaveChanges();
-                return entity;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        public Supplier Delete(int id)
-        {
-            try
-            {
-                var entity = _context.Suppliers.FirstOrDefault(x => x.SupplierID == id);
-
-                _context.Suppliers.Remove(entity);
-                _context.SaveChanges();
-
-                return entity;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
+        #region Main Operations
         public List<Supplier> Get()
         {
-            try
-            {
-                return _context.Suppliers.ToList();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return _context.Suppliers.ToList();
         }
 
         public Supplier GetById(int id)
         {
-            try
-            {
-                return _context.Suppliers.FirstOrDefault(x => x.SupplierID == id);
-            }
-            catch (Exception)
-            {
+            if (id == 0)
                 return null;
-            }
+
+            return _context.Suppliers.FirstOrDefault(x => x.SupplierID == id);
+        }
+
+        public Supplier Add(Supplier entity)
+        {
+            if (entity == null)
+                return null;
+
+            _context.Suppliers.Add(entity);
+            _context.SaveChanges();
+            return entity;
         }
 
         public Supplier Update(Supplier entity)
         {
-            try
-            {
-                _context.Suppliers.Update(entity);
-                _context.SaveChanges();
-                return entity;
-            }
-            catch (Exception)
-            {
+            if (entity == null)
                 return null;
-            }
+
+            _context.Suppliers.Update(entity);
+            _context.SaveChanges();
+            return entity;
         }
+
+        public Supplier Delete(int id)
+        {
+            if (id == 0)
+                return null;
+
+            var entity = _context.Suppliers.FirstOrDefault(x => x.SupplierID == id);
+
+            if (entity == null)
+                return null;
+
+            _context.Suppliers.Remove(entity);
+            _context.SaveChanges();
+
+            return entity;
+        }
+
+        #endregion
     }
 }

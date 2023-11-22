@@ -1,6 +1,7 @@
 ﻿using EcomManagement.Contracts;
 using EcomManagement.Data;
 using EcomManagement.Models.Shippers;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace EcomManagement.Repositories
 {
@@ -14,75 +15,58 @@ namespace EcomManagement.Repositories
         }
         #endregion
 
-        public Shipper Add(Shipper entity)
-        {
-            try
-            {
-                _context.Shippers.Add(entity);
-                _context.SaveChanges();
-
-                return entity;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        public Shipper Delete(int id)
-        {
-            try
-            {
-                var entity = _context.Shippers.FirstOrDefault(x => x.ShipperID == id);
-
-                _context.Shippers.Remove(entity);
-                _context.SaveChanges();
-
-                return entity;
-            }
-            catch (Exception)
-            {   
-                return null;
-            }
-        }
-
+        #region Main Operations
         public List<Shipper> Get()
         {
-            try
-            {
-                return _context.Shippers.ToList();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return _context.Shippers.ToList();
         }
 
         public Shipper GetById(int id)
         {
-            try
-            {
-                return _context.Shippers.FirstOrDefault(x => x.ShipperID == id);
-            }
-            catch (Exception)
-            {
+            if (id == 0)
                 return null;
-            }
+
+            return _context.Shippers.FirstOrDefault(x => x.ShipperID == id);
+        }
+
+        public Shipper Add(Shipper entity)
+        {
+            if (entity == null)
+                return null;
+
+            _context.Shippers.Add(entity);
+            _context.SaveChanges();
+
+            return entity;
         }
 
         public Shipper Update(Shipper entity)
         {
-            try
-            {
-                _context.Shippers.Update(entity);
-                _context.SaveChanges();
-
-                return entity;
-            }
-            catch (Exception)
-            {
+            if (entity == null)
                 return null;
-            }
+
+            _context.Shippers.Update(entity);
+            _context.SaveChanges();
+
+            return entity;
         }
+
+        public Shipper Delete(int id)
+        {
+            if (id == 0)
+                return null;
+
+            var entity = _context.Shippers.FirstOrDefault(x => x.ShipperID == id);
+
+            if (entity == null)
+                return null;
+
+            _context.Shippers.Remove(entity);
+            _context.SaveChanges();
+
+            return entity;
+        }
+
+        #endregion
     }
 }
