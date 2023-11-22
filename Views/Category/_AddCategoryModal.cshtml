@@ -1,7 +1,7 @@
 ﻿@model Category
 
 <button type="button" class="btn btn-lg btn-success" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
-    New <i class="bi bi-plus-square"></i>
+    Add Category <i class="bi bi-plus-square"></i>
 </button>
 
 <!-- Modal -->
@@ -17,12 +17,24 @@
 
             <form asp-controller="Category" asp-action="AddCategory" method="post">
 
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                            {
+                                <li>@error.ErrorMessage</li>
+                            }
+                        </ul>
+                    </div>
+                }
+
                 <div class="modal-body">
 
                     <div class="row m-3">
                         <Label class="col-3" asp-for="CategoryName">Category Name</Label>
                         <div class="col">
-                            <input class="form-control" asp-for="CategoryName" type="text" name="CategoryName" />
+                            <input class="form-control" asp-for="CategoryName" type="text" name="CategoryName" aria-required="true" />
                             <span asp-validation-for="CategoryName" class="text-danger"></span>
                         </div>
 
@@ -31,7 +43,7 @@
                     <div class="row m-3">
                         <Label class="col-3" asp-for="Description">Description</Label>
                         <div class="col">
-                            <textarea class="form-control" asp-for="Description" name="Description"></textarea>
+                            <textarea class="form-control" asp-for="Description" name="Description" aria-required="true"></textarea>
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                     </div>

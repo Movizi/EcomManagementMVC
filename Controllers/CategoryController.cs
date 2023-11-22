@@ -2,6 +2,7 @@
 using EcomManagement.Models.Categories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Build.Framework;
 
 namespace EcomManagement.Controllers
 {
@@ -37,7 +38,14 @@ namespace EcomManagement.Controllers
                 return RedirectToAction("Index");
             }
 
-            _repo.Add(entity);
+            var add = _repo.Add(entity);
+
+            if(add == null)
+            {
+                ModelState.AddModelError(string.Empty, "Something Went Wrong");
+
+                return RedirectToAction("Index");
+            }
 
             return RedirectToAction("Index");
         }
